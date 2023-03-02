@@ -26,6 +26,11 @@ customer_orders as (
 
 ),
 
+customer_payment as (
+    select
+        customer_id
+)
+
 final as (
 
     select
