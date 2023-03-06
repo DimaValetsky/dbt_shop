@@ -1,15 +1,10 @@
-with payments as (
+select
+    id as payment_id,
+    orderid as order_id,
+    paymentmethod as payment_method,
+    status,
+    amount / 100 as amount,
+    created as created_at
 
-    select
-        id as customer_id,
-        orderid as order_id,
-        paymentmethod,
-        status,
-        amount,
-        created
-    
-    from `dbt-project-1337228.`.stripe.payment
+from `dbt-project-1337228.`.stripe.payment
 
-)
-
-select * from payments
