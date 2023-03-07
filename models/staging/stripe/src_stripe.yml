@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: stripe
+    database: dbt-project-1337228
+    tables:
+      - name: payment
+        freshness:
+          warn_after:
+            count: 4
+            period: day
+          error_after:
+            count: 8
+            period: day
+        loaded_at_field: _batched_at
