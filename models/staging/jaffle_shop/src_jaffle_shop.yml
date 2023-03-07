@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    database: dbt-project-1337228
+    tables:
+      - name: customers
+      - name: orders
+        freshness:
+          warn_after:
+            count: 5
+            period: day
+          error_after:
+            count: 10
+            period: day
+        loaded_at_field: _etl_loaded_at
