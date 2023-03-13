@@ -1,0 +1,33 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    description: table copied from dbt dataset
+    database: dbt-project-1337228
+    tables:
+      - name: customers
+        description: raw customers data
+        columns:
+          - name: id
+            description: primary key for customers raw data
+            tests:
+              - unique
+              - not_null
+            
+      - name: orders
+        description: raw orders data
+        columns:
+          - name: id
+            description: primary key for orders raw data
+            tests:
+              - unique
+              - not_null
+              
+        freshness:
+          warn_after:
+            count: 5
+            period: day
+          error_after:
+            count: 10
+            period: day
+        loaded_at_field: _etl_loaded_at
